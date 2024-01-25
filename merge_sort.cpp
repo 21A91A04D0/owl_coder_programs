@@ -3,9 +3,9 @@ using namespace std;
 void Merge(int low, int mid, int high, int *arr) {
     int i = low;
     int j = mid + 1;
-    int temp[high++];
+    int temp[high + 1];
     int k = low;
-    while(i <= mid && j < high){
+    while(i <= mid && j <= high){
         if(arr[i] < arr[j]) {
             temp[k++] = arr[i++];
         }
@@ -16,10 +16,10 @@ void Merge(int low, int mid, int high, int *arr) {
     while(i <= mid) {
         temp[k++] = arr[i++];
     }
-    while(j < high) {
+    while(j <= high) {
         temp[k++] = arr[j++];
     }
-    for(int i = low ; i < high ; i++) {
+    for(int i = low ; i <= high ; i++) {
         arr[i] = temp[i];
     }
 }
@@ -31,10 +31,11 @@ void MergeSort(int low, int *arr, int high) {
     Merge(low, mid, high, arr);
 }
 int main() {
-    int arr[9] = {9, 9, 8, 9, 5, 5 ,9, 9, 9};
+    int arr[5] = {4, 1, 3, 9, 7};
     int n = sizeof(arr) / sizeof(int);
-    MergeSort(0, arr, n);
-    for(int i = 0 ; i < n ; i ++) {
+    // cout << n;
+    MergeSort(0, arr, n - 1);
+    for(int i = 0 ; i < n ; i++) {
         cout << arr[i] << " ";
     }
 }
